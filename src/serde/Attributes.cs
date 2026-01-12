@@ -101,7 +101,7 @@ sealed class SerdeTypeOptions : Attribute
     /// <summary>
     /// Override the formatting for members.
     /// </summary>
-    public MemberFormat MemberFormat { get; init; } = MemberFormat.CamelCase;
+    public MemberFormat MemberFormat { get; init; } = MemberFormat.None;
 
     /// <summary>
     /// The default behavior for null is to skip serialization. Set this to true to force
