@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
     <metadata>
-      <id>Serde</id>
-      <authors>Serde.NET</authors>
-      <description>Serde.NET is a multi-format serialization library.</description>
+      <id>Deficuet.Serde</id>
+      <authors>Serde.NET forked by Deficuet</authors>
+      <description>Serde.NET is a multi-format serialization library based on code-generation, no runtime reflection required.</description>
       <readme>docs/README.Serde.md</readme>
       <version>$SerdePkgVersion$</version>
       <license type="expression">BSD-3-Clause</license>
       <projectUrl>https://commentout.com/serde-dn</projectUrl>
-      <repository type="git" url="https://github.com/agocke/serde-dn" />
+      <repository type="git" url="https://github.com/Deficuet/Serde.NET" />
       <dependencies>
         <group targetFramework="net10.0" />
         <group targetFramework="net8.0" />
