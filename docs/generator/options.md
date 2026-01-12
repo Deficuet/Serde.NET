@@ -23,7 +23,7 @@ Note that these options only apply to the target type, not the type of nested me
 
 - `[SerdeTypeOptions(MemberFormat = ...)]`
 
-  `MemberFormat.CamelCase` by default. Renames all the fields or properties of the generated implementation according to the given format. The possible formats are "camelCase", "PascalCase", "kebab-case", and "none". "none" means that the members should not be renamed.
+  `MemberFormat.None` by default. Renames all the fields or properties of the generated implementation according to the given format. The possible formats are "camelCase", "PascalCase", "kebab-case", and "none". "none" means that the members should not be renamed.
 
 - `[SerdeTypeOptions(SerializeNull = false)]`
 
