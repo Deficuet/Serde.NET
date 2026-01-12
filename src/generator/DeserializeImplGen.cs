@@ -98,6 +98,7 @@ namespace Serde
     {
         throw Serde.DeserializeException.ExpectedEndOfType(index);
     }
+    de.End(_l_serdeInfo);
     return _l_result;
 }
 """);
@@ -242,6 +243,9 @@ namespace Serde
         }
     }
     {{typeCreationExpr}}
+
+    typeDeserialize.End({{typeInfoLocalName}});
+
     return newType;
 }
 """);

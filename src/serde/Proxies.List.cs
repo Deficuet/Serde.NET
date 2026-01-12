@@ -65,6 +65,7 @@ public abstract class DeListBase<
     {
         var info = SerdeInfo;
         var deCollection = deserializer.ReadType(info);
+        TList result;
         if (deCollection.SizeOpt is int size)
         {
             var builder = GetFixBuilder(size);
@@ -72,7 +73,7 @@ public abstract class DeListBase<
             {
                 FixAdd(builder, _de.Deserialize(deCollection, info, i));
             }
-            return FromFix(builder);
+            result = FromFix(builder);
         }
         else
         {
@@ -88,8 +89,10 @@ public abstract class DeListBase<
 
                 VarAdd(builder, _de.Deserialize(deCollection, info, index));
             }
-            return FromVar(builder);
+            result = FromVar(builder);
         }
+        deCollection.End(info);
+        return result;
     }
 
     protected abstract TFixBuilder GetFixBuilder(int size);

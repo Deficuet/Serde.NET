@@ -119,7 +119,12 @@ public interface ITypeDeserializer : IDisposable
     }
     void ReadBytes(ISerdeInfo info, int index, IBufferWriter<byte> writer);
 
-    void IDisposable.Dispose() { }
+    void IDisposable.Dispose()
+    {
+        GC.SuppressFinalize(this);
+    }
+
+    void End(ISerdeInfo info) { }
 }
 
 public static class ITypeDeserializerExt
