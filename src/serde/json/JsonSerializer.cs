@@ -15,27 +15,30 @@ namespace Serde.Json
         /// <summary>
         /// Serialize the given type to a string.
         /// </summary>
-        public static string Serialize<T>(T provider, ISerialize<T> ser)
+        public static string Serialize<T>(T provider, ISerialize<T> ser, JsonWriterOptions? options = null)
         {
             using var bufferWriter = new PooledByteBufferWriter(16 * 1024);
-            using var writer = new Utf8JsonWriter(bufferWriter, new JsonWriterOptions
-            {
-                Indented = false,
-                SkipValidation = true
-            });
+            using var writer = new Utf8JsonWriter(
+                bufferWriter, 
+                options ?? new JsonWriterOptions
+                {
+                    Indented = false,
+                    SkipValidation = true
+                }
+            );
             var serializer = new JsonSerializer(writer);
             ser.Serialize(provider, serializer);
             writer.Flush();
             return Encoding.UTF8.GetString(bufferWriter.WrittenMemory.Span);
         }
 
-        public static string Serialize<T, TProvider>(T s)
+        public static string Serialize<T, TProvider>(T s, JsonWriterOptions? options = null)
             where TProvider : ISerializeProvider<T>
-            => Serialize(s, TProvider.Instance);
+            => Serialize(s, TProvider.Instance, options);
 
-        public static string Serialize<T>(T s)
+        public static string Serialize<T>(T s, JsonWriterOptions? options = null)
             where T : ISerializeProvider<T>
-            => Serialize(s, T.Instance);
+            => Serialize(s, T.Instance, options);
 
         public static T Deserialize<T>(string source)
             where T : IDeserializeProvider<T>
