@@ -25,7 +25,7 @@ public interface IDeserializer : IDisposable
     double ReadF64();
     decimal ReadDecimal();
     string ReadString();
-    int ReadEnumIndex(ISerdeInfo enumInfo);
+    (int, string?) ReadEnumIndex(ISerdeInfo enumInfo);
     DateTime ReadDateTime();
     DateTimeOffset ReadDateTimeOffset();
     DateOnly ReadDateOnly()
