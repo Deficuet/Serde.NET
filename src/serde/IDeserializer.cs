@@ -25,6 +25,7 @@ public interface IDeserializer : IDisposable
     double ReadF64();
     decimal ReadDecimal();
     string ReadString();
+    int ReadEnumIndex(ISerdeInfo enumInfo);
     DateTime ReadDateTime();
     DateTimeOffset ReadDateTimeOffset();
     DateOnly ReadDateOnly()
@@ -60,6 +61,7 @@ public interface ITypeDeserializer : IDisposable
 {
     public const int EndOfType = -1;
     public const int IndexNotFound = -2;
+    public const int NonApplicable = -3;
 
     /// <summary>
     /// Returns the number of elements in the collection, or null if the size is not known.
