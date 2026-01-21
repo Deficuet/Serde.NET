@@ -268,10 +268,11 @@ partial class JsonDeserializer<TReader>
             return v;
         }
 
-        void ITypeDeserializer.ReadBytes(ISerdeInfo info, int index, IBufferWriter<byte> writer)
+        byte[] ITypeDeserializer.ReadBytes(ISerdeInfo info, int index)
         {
-            _deserializer.ReadBytes(writer);
+            var ret = _deserializer.ReadBytes();
             _index++;
+            return ret;
         }
     }
 }

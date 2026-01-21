@@ -205,10 +205,10 @@ partial class JsonDeserializer<TReader>
             ReadColon();
             return _deserializer.ReadTimeOnly();
         }
-        void ITypeDeserializer.ReadBytes(ISerdeInfo info, int index, IBufferWriter<byte> writer)
+        byte[] ITypeDeserializer.ReadBytes(ISerdeInfo info, int index)
         {
             ReadColon();
-            _deserializer.ReadBytes(writer);
+            return _deserializer.ReadBytes();
         }
 
         void ITypeDeserializer.SkipValue(ISerdeInfo info, int index)

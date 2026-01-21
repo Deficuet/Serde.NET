@@ -40,7 +40,7 @@ public interface IDeserializer : IDisposable
         var s = ReadString();
         return TimeOnly.Parse(s);
     }
-    void ReadBytes(IBufferWriter<byte> writer);
+    byte[] ReadBytes();
     ITypeDeserializer ReadType(ISerdeInfo typeInfo);
 }
 
@@ -162,7 +162,7 @@ public interface ITypeDeserializer : IDisposable
         var s = ReadString(info, index);
         return TimeOnly.Parse(s);
     }
-    void ReadBytes(ISerdeInfo info, int index, IBufferWriter<byte> writer);
+    byte[] ReadBytes(ISerdeInfo info, int index);
 
     void IDisposable.Dispose()
     {

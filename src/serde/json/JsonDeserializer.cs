@@ -382,12 +382,12 @@ internal sealed partial class JsonDeserializer<TReader> : BaseJsonDeserializer, 
         throw new JsonException($"Unexpected token: {(char)peek}");
     }
 
-    public void ReadBytes(IBufferWriter<byte> writer)
+    public byte[] ReadBytes()
     {
         var span = ReadUtf8Span();
         if (span.Length == 0)
         {
-            return;
+            return [];
         }
         // This should be a base64 string, calculate needed size
         if (span.Length % 4 != 0)
@@ -395,12 +395,12 @@ internal sealed partial class JsonDeserializer<TReader> : BaseJsonDeserializer, 
             throw new JsonException($"Invalid base64 string length: {span.Length}");
         }
         var size = span.Length / 4 * 3;
-        var buffer = writer.GetSpan(size);
+        var buffer = new byte[size];
         var status = Base64.DecodeFromUtf8(span, buffer, out _, out var written);
-        writer.Advance(written);
         if (status != OperationStatus.Done)
         {
             throw new JsonException($"Invalid base64 string: {status}");
         }
+        return buffer[..written];
     }
 }
