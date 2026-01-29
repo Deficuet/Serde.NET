@@ -24,11 +24,17 @@ namespace Serde
         public static List<DataMemberSymbol> GetDataMembers(ITypeSymbol type, SerdeUsage usage)
         {
             var members = new List<DataMemberSymbol>();
+            var parentTypes = new List<ITypeSymbol>();
             var curType = type;
             while (curType is not ({ SpecialType: SpecialType.System_Object } or null))
             {
-                var typeOptions = GetTypeOptions(curType);
-                foreach (var m in curType.GetMembers())
+                parentTypes.Add(curType);
+                curType = curType.BaseType;
+            }
+            foreach (var typeSymbol in parentTypes.AsEnumerable().Reverse())
+            {
+                var typeOptions = GetTypeOptions(typeSymbol);
+                foreach (var m in typeSymbol.GetMembers())
                 {
                     if (m is not {
                             DeclaredAccessibility: Accessibility.Public,
@@ -47,7 +53,7 @@ namespace Serde
                         // Skip indexers
                         continue;
                     }
-                    if (curType.TypeKind != TypeKind.Enum && m.IsStatic)
+                    if (typeSymbol.TypeKind != TypeKind.Enum && m.IsStatic)
                     {
                         continue;
                     }
@@ -60,7 +66,6 @@ namespace Serde
                     }
                     members.Add(new DataMemberSymbol(m, typeOptions, memberOptions));
                 }
-                curType = curType.BaseType;
             }
             return members;
         }
