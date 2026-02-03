@@ -36,9 +36,11 @@ namespace Serde
                 var typeOptions = GetTypeOptions(typeSymbol);
                 foreach (var m in typeSymbol.GetMembers())
                 {
-                    if (m is not {
+                    if (m is not
+                        {
                             DeclaredAccessibility: Accessibility.Public,
-                            Kind: SymbolKind.Field or SymbolKind.Property })
+                            Kind: SymbolKind.Field or SymbolKind.Property
+                        })
                     {
                         continue;
                     }
@@ -106,7 +108,8 @@ namespace Serde
                         {
                             {
                                 Key: nameof(MemberOptions.ThrowIfMissing),
-                                Value: {
+                                Value:
+                                {
                                     Kind: TypedConstantKind.Primitive,
                                     Type.SpecialType: SpecialType.System_Boolean
                                 }
@@ -114,7 +117,8 @@ namespace Serde
 
                             {
                                 Key: nameof(MemberOptions.Rename),
-                                Value: {
+                                Value:
+                                {
                                     Kind: TypedConstantKind.Primitive,
                                     Type.SpecialType: SpecialType.System_String
                                 }
@@ -122,7 +126,8 @@ namespace Serde
 
                             {
                                 Key: nameof(MemberOptions.ProvideAttributes),
-                                Value: {
+                                Value:
+                                {
                                     Kind: TypedConstantKind.Primitive,
                                     Type.SpecialType: SpecialType.System_Boolean
                                 }
@@ -130,7 +135,8 @@ namespace Serde
 
                             {
                                 Key: nameof(MemberOptions.Skip),
-                                Value: {
+                                Value:
+                                {
                                     Kind: TypedConstantKind.Primitive,
                                     Type.SpecialType: SpecialType.System_Boolean
                                 }
@@ -138,7 +144,8 @@ namespace Serde
 
                             {
                                 Key: nameof(MemberOptions.SkipSerialize),
-                                Value: {
+                                Value:
+                                {
                                     Kind: TypedConstantKind.Primitive,
                                     Type.SpecialType: SpecialType.System_Boolean
                                 }
@@ -146,7 +153,8 @@ namespace Serde
 
                             {
                                 Key: nameof(MemberOptions.SkipDeserialize),
-                                Value: {
+                                Value:
+                                {
                                     Kind: TypedConstantKind.Primitive,
                                     Type.SpecialType: SpecialType.System_Boolean
                                 }
@@ -180,29 +188,30 @@ namespace Serde
                         {
                             continue;
                         }
-                        options = (name, argument) switch {
+                        options = (name, argument) switch
+                        {
                             (nameof(TypeOptions.MemberFormat),
-                                {
-                                    Kind: TypedConstantKind.Enum,
-                                    Type.Name: nameof(MemberFormat)
-                                }) => options with { MemberFormat = (MemberFormat)value },
+                            {
+                                Kind: TypedConstantKind.Enum,
+                                Type.Name: nameof(MemberFormat)
+                            }) => options with { MemberFormat = (MemberFormat)value },
                             (nameof(TypeOptions.DenyUnknownMembers),
-                                {
-                                    Kind: TypedConstantKind.Primitive,
-                                    Type.SpecialType: SpecialType.System_Boolean
-                                }
+                            {
+                                Kind: TypedConstantKind.Primitive,
+                                Type.SpecialType: SpecialType.System_Boolean
+                            }
                             ) => options with { DenyUnknownMembers = (bool)value },
                             (nameof(TypeOptions.AllowDuplicateKeys),
-                                {
-                                    Kind: TypedConstantKind.Primitive,
-                                    Type.SpecialType: SpecialType.System_Boolean
-                                }
+                            {
+                                Kind: TypedConstantKind.Primitive,
+                                Type.SpecialType: SpecialType.System_Boolean
+                            }
                             ) => options with { AllowDuplicateKeys = (bool)value },
                             (nameof(TypeOptions.Rename),
-                                {
-                                    Kind: TypedConstantKind.Primitive,
-                                    Type.SpecialType: SpecialType.System_String
-                                }) => options with { Rename = (string)value },
+                            {
+                                Kind: TypedConstantKind.Primitive,
+                                Type.SpecialType: SpecialType.System_String
+                            }) => options with { Rename = (string)value },
                             _ => options
                         };
                     }
@@ -222,5 +231,52 @@ namespace Serde
                 SymbolDisplayMiscellaneousOptions.UseSpecialTypes
                 | SymbolDisplayMiscellaneousOptions.EscapeKeywordIdentifiers
                 | SymbolDisplayMiscellaneousOptions.IncludeNullableReferenceTypeModifier);
+
+        private static readonly Dictionary<INamedTypeSymbol, bool> _isInheritedCache = [];
+
+        private static bool IsInherited(this AttributeData attrData)
+        {
+            if (_isInheritedCache.TryGetValue(attrData.AttributeClass!.OriginalDefinition, out var isInherited))
+            {
+                return isInherited;
+            }
+            isInherited = true;
+            var usageAttr = attrData.AttributeClass.GetAttributes()
+                .FirstOrDefault(ad => ad.AttributeClass?.ToDisplayString() == "System.AttributeUsageAttribute");
+            if (usageAttr is not null)
+            {
+                foreach (var arg in usageAttr.NamedArguments)
+                {
+                    if (arg is { Key: nameof(AttributeUsageAttribute.Inherited), Value.Value: bool b })
+                    {
+                        isInherited = b;
+                    }
+                }
+            }
+            _isInheritedCache[attrData.AttributeClass.OriginalDefinition] = isInherited;
+            return isInherited;
+        }
+
+        public static IEnumerable<AttributeData> GetInheritedAttributes(this INamedTypeSymbol typeSymbol)
+        {
+            foreach (var attr in typeSymbol.GetAttributes())
+            {
+                yield return attr;
+            }
+            for (var cur = typeSymbol.BaseType; cur is not null && cur.SpecialType != SpecialType.System_Object; cur = cur.BaseType)
+            {
+                foreach (var attr in cur.GetAttributes())
+                {
+                    if (attr.AttributeClass is null)
+                    {
+                        continue;
+                    }
+                    if (attr.IsInherited())
+                    {
+                        yield return attr;
+                    }
+                }
+            }
+        }
     }
 }

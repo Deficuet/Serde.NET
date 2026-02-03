@@ -625,7 +625,16 @@ internal class ProxyMap
     public ProxyMap(ISymbol symbol)
     {
         isEmpty = false;
-        foreach (var attr in symbol.GetAttributes())
+        IEnumerable<AttributeData> attrs;
+        if (symbol is INamedTypeSymbol typeSymbol)
+        {
+            attrs = typeSymbol.GetInheritedAttributes();
+        }
+        else
+        {
+            attrs = symbol.GetAttributes().AsEnumerable();
+        }
+        foreach (var attr in attrs)
         {
             if (attr.AttributeClass is null)
             {

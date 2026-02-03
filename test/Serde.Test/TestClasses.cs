@@ -27,6 +27,9 @@ public partial class Vector2Proxy2;
 [GenerateSerde(ForType = typeof(Vector3))]
 public partial class Vector3Proxy;
 
+[GenerateSerde(ForType = typeof(Vector4))]
+public partial class Vector4Proxy;
+
 [GenerateSerde]
 [UseProxy(ForType = typeof(Vector2), Proxy = typeof(Vector2Proxy))]
 [UseProxy(ForType = typeof(Vector3), Proxy = typeof(Vector3Proxy))]
@@ -38,4 +41,11 @@ public partial class Test
     public required Vector2[][] weights;
     [UseProxy(ForType = typeof(Vector2), Proxy = typeof(Vector2Proxy2), Usage = SerdeUsage.Deserialize)]
     public required Dictionary<Vector3, Vector2[][]> points;
+}
+
+[GenerateSerde]
+[UseProxy(ForType = typeof(Vector4), Proxy = typeof(Vector4Proxy))]
+public partial class Test2 : Test
+{
+    public required Vector4 v4;
 }
