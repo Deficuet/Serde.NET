@@ -11,8 +11,8 @@ partial class InvalidJsonTests
             "NoComma",
         typeof(Serde.Json.Test.InvalidJsonTests.NoComma).GetCustomAttributesData(),
         new (string, global::Serde.ISerdeInfo, System.Reflection.MemberInfo?)[] {
-            ("a", global::Serde.SerdeInfoProvider.GetDeserializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Json.Test.InvalidJsonTests.NoComma).GetProperty("A")),
-            ("b", global::Serde.SerdeInfoProvider.GetDeserializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Json.Test.InvalidJsonTests.NoComma).GetProperty("B"))
+            ("A", global::Serde.SerdeInfoProvider.GetDeserializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Json.Test.InvalidJsonTests.NoComma).GetProperty("A")),
+            ("B", global::Serde.SerdeInfoProvider.GetDeserializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Json.Test.InvalidJsonTests.NoComma).GetProperty("B"))
         }
         );
     }

@@ -218,6 +218,9 @@ partial record AllInOne
                 Color = _l_color,
             };
 
+
+            typeDeserialize.End(_l_serdeInfo);
+
             return newType;
         }
     }

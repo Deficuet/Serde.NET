@@ -11,8 +11,8 @@ partial class JsonDeserializeTests
             "ThrowMissing",
         typeof(Serde.Test.JsonDeserializeTests.ThrowMissing).GetCustomAttributesData(),
         new (string, global::Serde.ISerdeInfo, System.Reflection.MemberInfo?)[] {
-            ("present", global::Serde.SerdeInfoProvider.GetDeserializeInfo<string, global::Serde.StringProxy>(), typeof(Serde.Test.JsonDeserializeTests.ThrowMissing).GetProperty("Present")),
-            ("missing", global::Serde.SerdeInfoProvider.GetDeserializeInfo<string?, Serde.NullableRefProxy.De<string, global::Serde.StringProxy>>(), typeof(Serde.Test.JsonDeserializeTests.ThrowMissing).GetProperty("Missing"))
+            ("Present", global::Serde.SerdeInfoProvider.GetDeserializeInfo<string, global::Serde.StringProxy>(), typeof(Serde.Test.JsonDeserializeTests.ThrowMissing).GetProperty("Present")),
+            ("Missing", global::Serde.SerdeInfoProvider.GetDeserializeInfo<string?, Serde.NullableRefProxy.De<string, global::Serde.StringProxy>>(), typeof(Serde.Test.JsonDeserializeTests.ThrowMissing).GetProperty("Missing"))
         }
         );
     }

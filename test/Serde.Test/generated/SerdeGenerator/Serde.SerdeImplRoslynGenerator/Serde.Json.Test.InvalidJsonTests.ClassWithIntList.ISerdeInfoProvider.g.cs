@@ -11,7 +11,7 @@ partial class InvalidJsonTests
             "ClassWithIntList",
         typeof(Serde.Json.Test.InvalidJsonTests.ClassWithIntList).GetCustomAttributesData(),
         new (string, global::Serde.ISerdeInfo, System.Reflection.MemberInfo?)[] {
-            ("obj", global::Serde.SerdeInfoProvider.GetDeserializeInfo<System.Collections.Generic.List<int>, Serde.ListProxy.De<int, global::Serde.I32Proxy>>(), typeof(Serde.Json.Test.InvalidJsonTests.ClassWithIntList).GetProperty("Obj"))
+            ("Obj", global::Serde.SerdeInfoProvider.GetDeserializeInfo<System.Collections.Generic.List<int>, Serde.ListProxy.De<int, global::Serde.I32Proxy>>(), typeof(Serde.Json.Test.InvalidJsonTests.ClassWithIntList).GetProperty("Obj"))
         }
         );
     }

@@ -11,9 +11,9 @@ partial class JsonSerializerTests
             "Color",
         typeof(Serde.Test.JsonSerializerTests.Color).GetCustomAttributesData(),
         new (string, global::Serde.ISerdeInfo, System.Reflection.MemberInfo?)[] {
-            ("red", global::Serde.SerdeInfoProvider.GetSerializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Test.JsonSerializerTests.Color).GetField("Red")),
-            ("green", global::Serde.SerdeInfoProvider.GetSerializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Test.JsonSerializerTests.Color).GetField("Green")),
-            ("blue", global::Serde.SerdeInfoProvider.GetSerializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Test.JsonSerializerTests.Color).GetField("Blue"))
+            ("Red", global::Serde.SerdeInfoProvider.GetSerializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Test.JsonSerializerTests.Color).GetField("Red")),
+            ("Green", global::Serde.SerdeInfoProvider.GetSerializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Test.JsonSerializerTests.Color).GetField("Green")),
+            ("Blue", global::Serde.SerdeInfoProvider.GetSerializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Test.JsonSerializerTests.Color).GetField("Blue"))
         }
         );
     }

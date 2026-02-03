@@ -11,8 +11,8 @@ partial class JsonDeserializeTests
             "SkipDeserialize",
         typeof(Serde.Test.JsonDeserializeTests.SkipDeserialize).GetCustomAttributesData(),
         new (string, global::Serde.ISerdeInfo, System.Reflection.MemberInfo?)[] {
-            ("required", global::Serde.SerdeInfoProvider.GetDeserializeInfo<string, global::Serde.StringProxy>(), typeof(Serde.Test.JsonDeserializeTests.SkipDeserialize).GetProperty("Required")),
-            ("skip", global::Serde.SerdeInfoProvider.GetDeserializeInfo<string, global::Serde.StringProxy>(), typeof(Serde.Test.JsonDeserializeTests.SkipDeserialize).GetProperty("Skip"))
+            ("Required", global::Serde.SerdeInfoProvider.GetDeserializeInfo<string, global::Serde.StringProxy>(), typeof(Serde.Test.JsonDeserializeTests.SkipDeserialize).GetProperty("Required")),
+            ("Skip", global::Serde.SerdeInfoProvider.GetDeserializeInfo<string, global::Serde.StringProxy>(), typeof(Serde.Test.JsonDeserializeTests.SkipDeserialize).GetProperty("Skip"))
         }
         );
     }

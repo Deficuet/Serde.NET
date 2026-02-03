@@ -45,6 +45,9 @@ partial class SerdeInfoTests
                 var newType = new Serde.Test.SerdeInfoTests.EmptyRecord() {
                 };
 
+
+                typeDeserialize.End(_l_serdeInfo);
+
                 return newType;
             }
         }

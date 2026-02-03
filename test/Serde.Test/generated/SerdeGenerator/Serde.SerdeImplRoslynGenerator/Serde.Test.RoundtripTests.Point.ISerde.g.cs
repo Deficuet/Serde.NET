@@ -67,6 +67,9 @@ partial class RoundtripTests
                     Y = _l_y,
                 };
 
+
+                typeDeserialize.End(_l_serdeInfo);
+
                 return newType;
             }
         }

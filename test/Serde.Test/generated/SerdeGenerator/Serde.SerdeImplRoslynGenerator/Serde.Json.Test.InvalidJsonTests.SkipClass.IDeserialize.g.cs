@@ -52,6 +52,9 @@ partial class InvalidJsonTests
                     C = _l_c,
                 };
 
+
+                typeDeserialize.End(_l_serdeInfo);
+
                 return newType;
             }
         }

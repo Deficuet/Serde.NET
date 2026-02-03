@@ -12,9 +12,9 @@ partial record AllInOne
         typeof(Serde.Test.AllInOne.ColorEnum).GetCustomAttributesData(),
         global::Serde.SerdeInfoProvider.GetSerializeInfo<int, global::Serde.I32Proxy>(),
         new (string, System.Reflection.MemberInfo?)[] {
-            ("red", typeof(Serde.Test.AllInOne.ColorEnum).GetField("Red")),
-            ("blue", typeof(Serde.Test.AllInOne.ColorEnum).GetField("Blue")),
-            ("green", typeof(Serde.Test.AllInOne.ColorEnum).GetField("Green"))
+            ("Red", typeof(Serde.Test.AllInOne.ColorEnum).GetField("Red")),
+            ("Blue", typeof(Serde.Test.AllInOne.ColorEnum).GetField("Blue")),
+            ("Green", typeof(Serde.Test.AllInOne.ColorEnum).GetField("Green"))
         }
         );
     }

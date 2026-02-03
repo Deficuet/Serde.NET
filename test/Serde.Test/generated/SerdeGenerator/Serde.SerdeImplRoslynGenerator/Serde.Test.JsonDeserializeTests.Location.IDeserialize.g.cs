@@ -108,6 +108,9 @@ partial class JsonDeserializeTests
                     Country = _l_country,
                 };
 
+
+                typeDeserialize.End(_l_serdeInfo);
+
                 return newType;
             }
         }

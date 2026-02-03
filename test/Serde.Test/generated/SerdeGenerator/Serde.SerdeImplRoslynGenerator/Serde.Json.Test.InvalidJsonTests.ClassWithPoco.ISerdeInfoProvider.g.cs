@@ -11,7 +11,7 @@ partial class InvalidJsonTests
             "ClassWithPoco",
         typeof(Serde.Json.Test.InvalidJsonTests.ClassWithPoco).GetCustomAttributesData(),
         new (string, global::Serde.ISerdeInfo, System.Reflection.MemberInfo?)[] {
-            ("obj", global::Serde.SerdeInfoProvider.GetDeserializeInfo<Serde.Json.Test.Poco, Serde.Json.Test.Poco>(), typeof(Serde.Json.Test.InvalidJsonTests.ClassWithPoco).GetProperty("Obj"))
+            ("Obj", global::Serde.SerdeInfoProvider.GetDeserializeInfo<Serde.Json.Test.Poco, Serde.Json.Test.Poco>(), typeof(Serde.Json.Test.InvalidJsonTests.ClassWithPoco).GetProperty("Obj"))
         }
         );
     }

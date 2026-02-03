@@ -11,9 +11,9 @@ partial class SerdeInfoTests
             "Rgb",
         typeof(Serde.Test.SerdeInfoTests.Rgb).GetCustomAttributesData(),
         new (string, global::Serde.ISerdeInfo, System.Reflection.MemberInfo?)[] {
-            ("r", global::Serde.SerdeInfoProvider.GetDeserializeInfo<byte, global::Serde.U8Proxy>(), typeof(Serde.Test.SerdeInfoTests.Rgb).GetField("R")),
-            ("g", global::Serde.SerdeInfoProvider.GetDeserializeInfo<byte, global::Serde.U8Proxy>(), typeof(Serde.Test.SerdeInfoTests.Rgb).GetField("G")),
-            ("b", global::Serde.SerdeInfoProvider.GetDeserializeInfo<byte, global::Serde.U8Proxy>(), typeof(Serde.Test.SerdeInfoTests.Rgb).GetField("B"))
+            ("R", global::Serde.SerdeInfoProvider.GetDeserializeInfo<byte, global::Serde.U8Proxy>(), typeof(Serde.Test.SerdeInfoTests.Rgb).GetField("R")),
+            ("G", global::Serde.SerdeInfoProvider.GetDeserializeInfo<byte, global::Serde.U8Proxy>(), typeof(Serde.Test.SerdeInfoTests.Rgb).GetField("G")),
+            ("B", global::Serde.SerdeInfoProvider.GetDeserializeInfo<byte, global::Serde.U8Proxy>(), typeof(Serde.Test.SerdeInfoTests.Rgb).GetField("B"))
         }
         );
     }

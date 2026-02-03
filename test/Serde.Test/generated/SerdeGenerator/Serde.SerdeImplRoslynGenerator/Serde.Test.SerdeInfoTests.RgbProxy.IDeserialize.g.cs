@@ -66,6 +66,9 @@ partial class SerdeInfoTests
                     B = _l_b,
                 };
 
+
+                typeDeserialize.End(_l_serdeInfo);
+
                 return newType;
             }
         }

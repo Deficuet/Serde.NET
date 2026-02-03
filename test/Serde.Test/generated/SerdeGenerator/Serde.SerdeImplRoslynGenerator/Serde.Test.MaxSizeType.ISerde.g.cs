@@ -561,6 +561,9 @@ partial struct MaxSizeType
                 Field64 = _l_field64,
             };
 
+
+            typeDeserialize.End(_l_serdeInfo);
+
             return newType;
         }
     }

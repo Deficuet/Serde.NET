@@ -47,6 +47,9 @@ partial class SerdeInfoTests
                     var newType = new Serde.Test.SerdeInfoTests.UnionBase.B() {
                     };
 
+
+                    typeDeserialize.End(_l_serdeInfo);
+
                     return newType;
                 }
             }

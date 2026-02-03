@@ -34,6 +34,7 @@ partial class JsonDeserializeTests
                 {
                     throw Serde.DeserializeException.ExpectedEndOfType(index);
                 }
+                de.End(_l_serdeInfo);
                 return _l_result;
             }
         }

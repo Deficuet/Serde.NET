@@ -59,6 +59,9 @@ partial class GenericWrapperTests
                     A = _l_a,
                 };
 
+
+                typeDeserialize.End(_l_serdeInfo);
+
                 return newType;
             }
         }

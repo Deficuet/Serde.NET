@@ -13,7 +13,7 @@ partial class JsonSerializerTests
                 "B",
             typeof(Serde.Test.JsonSerializerTests.BasicDU.B).GetCustomAttributesData(),
             new (string, global::Serde.ISerdeInfo, System.Reflection.MemberInfo?)[] {
-                ("y", global::Serde.SerdeInfoProvider.GetSerializeInfo<string, global::Serde.StringProxy>(), typeof(Serde.Test.JsonSerializerTests.BasicDU.B).GetProperty("Y"))
+                ("Y", global::Serde.SerdeInfoProvider.GetSerializeInfo<string, global::Serde.StringProxy>(), typeof(Serde.Test.JsonSerializerTests.BasicDU.B).GetProperty("Y"))
             }
             );
         }

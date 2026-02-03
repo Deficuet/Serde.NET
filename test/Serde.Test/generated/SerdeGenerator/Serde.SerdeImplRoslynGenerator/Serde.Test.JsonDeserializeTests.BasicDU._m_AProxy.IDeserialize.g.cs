@@ -53,6 +53,9 @@ partial class JsonDeserializeTests
                     var newType = new Serde.Test.JsonDeserializeTests.BasicDU.A(_l_x) {
                     };
 
+
+                    typeDeserialize.End(_l_serdeInfo);
+
                     return newType;
                 }
             }

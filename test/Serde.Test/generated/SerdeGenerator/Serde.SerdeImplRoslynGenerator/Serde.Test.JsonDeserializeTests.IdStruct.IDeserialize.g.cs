@@ -52,6 +52,9 @@ partial class JsonDeserializeTests
                     Id = _l_id,
                 };
 
+
+                typeDeserialize.End(_l_serdeInfo);
+
                 return newType;
             }
         }

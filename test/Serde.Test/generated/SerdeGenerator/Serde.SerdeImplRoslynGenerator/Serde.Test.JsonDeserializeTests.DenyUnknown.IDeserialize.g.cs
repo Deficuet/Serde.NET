@@ -58,6 +58,9 @@ partial class JsonDeserializeTests
                     Missing = _l_missing,
                 };
 
+
+                typeDeserialize.End(_l_serdeInfo);
+
                 return newType;
             }
         }

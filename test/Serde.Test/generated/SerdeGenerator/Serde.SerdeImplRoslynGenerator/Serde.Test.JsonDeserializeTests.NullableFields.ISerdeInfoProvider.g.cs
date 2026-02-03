@@ -11,8 +11,8 @@ partial class JsonDeserializeTests
             "NullableFields",
         typeof(Serde.Test.JsonDeserializeTests.NullableFields).GetCustomAttributesData(),
         new (string, global::Serde.ISerdeInfo, System.Reflection.MemberInfo?)[] {
-            ("s", global::Serde.SerdeInfoProvider.GetDeserializeInfo<string?, Serde.NullableRefProxy.De<string, global::Serde.StringProxy>>(), typeof(Serde.Test.JsonDeserializeTests.NullableFields).GetField("S")),
-            ("dict", global::Serde.SerdeInfoProvider.GetDeserializeInfo<System.Collections.Generic.Dictionary<string, string?>, Serde.DictProxy.De<string, string?, global::Serde.StringProxy, Serde.NullableRefProxy.De<string, global::Serde.StringProxy>>>(), typeof(Serde.Test.JsonDeserializeTests.NullableFields).GetField("Dict"))
+            ("S", global::Serde.SerdeInfoProvider.GetDeserializeInfo<string?, Serde.NullableRefProxy.De<string, global::Serde.StringProxy>>(), typeof(Serde.Test.JsonDeserializeTests.NullableFields).GetField("S")),
+            ("Dict", global::Serde.SerdeInfoProvider.GetDeserializeInfo<System.Collections.Generic.Dictionary<string, string?>, Serde.DictProxy.De<string, string?, global::Serde.StringProxy, Serde.NullableRefProxy.De<string, global::Serde.StringProxy>>>(), typeof(Serde.Test.JsonDeserializeTests.NullableFields).GetField("Dict"))
         }
         );
     }

@@ -50,6 +50,9 @@ partial class Poco
                 Id = _l_id,
             };
 
+
+            typeDeserialize.End(_l_serdeInfo);
+
             return newType;
         }
     }

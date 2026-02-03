@@ -50,6 +50,9 @@ partial class PocoDictionary
                 key = _l_key,
             };
 
+
+            typeDeserialize.End(_l_serdeInfo);
+
             return newType;
         }
     }

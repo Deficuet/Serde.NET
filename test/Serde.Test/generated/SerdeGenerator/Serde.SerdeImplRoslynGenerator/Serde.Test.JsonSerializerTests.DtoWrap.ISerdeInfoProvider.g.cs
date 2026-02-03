@@ -11,7 +11,7 @@ partial class JsonSerializerTests
             "DtoWrap",
         typeof(Serde.Test.JsonSerializerTests.DtoWrap).GetCustomAttributesData(),
         new (string, global::Serde.ISerdeInfo, System.Reflection.MemberInfo?)[] {
-            ("value", global::Serde.SerdeInfoProvider.GetSerializeInfo<System.DateTimeOffset, global::Serde.DateTimeOffsetProxy>(), typeof(Serde.Test.JsonSerializerTests.DtoWrap).GetProperty("Value"))
+            ("Value", global::Serde.SerdeInfoProvider.GetSerializeInfo<System.DateTimeOffset, global::Serde.DateTimeOffsetProxy>(), typeof(Serde.Test.JsonSerializerTests.DtoWrap).GetProperty("Value"))
         }
         );
     }

@@ -11,8 +11,8 @@ partial class DuplicateKeyTests
             "SimpleTypeAllowDuplicates",
         typeof(Serde.Test.DuplicateKeyTests.SimpleTypeAllowDuplicates).GetCustomAttributesData(),
         new (string, global::Serde.ISerdeInfo, System.Reflection.MemberInfo?)[] {
-            ("name", global::Serde.SerdeInfoProvider.GetDeserializeInfo<string, global::Serde.StringProxy>(), typeof(Serde.Test.DuplicateKeyTests.SimpleTypeAllowDuplicates).GetProperty("Name")),
-            ("value", global::Serde.SerdeInfoProvider.GetDeserializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Test.DuplicateKeyTests.SimpleTypeAllowDuplicates).GetProperty("Value"))
+            ("Name", global::Serde.SerdeInfoProvider.GetDeserializeInfo<string, global::Serde.StringProxy>(), typeof(Serde.Test.DuplicateKeyTests.SimpleTypeAllowDuplicates).GetProperty("Name")),
+            ("Value", global::Serde.SerdeInfoProvider.GetDeserializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Test.DuplicateKeyTests.SimpleTypeAllowDuplicates).GetProperty("Value"))
         }
         );
     }

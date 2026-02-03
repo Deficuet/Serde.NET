@@ -11,7 +11,7 @@ partial class InvalidJsonTests
             "SkipClass",
         typeof(Serde.Json.Test.InvalidJsonTests.SkipClass).GetCustomAttributesData(),
         new (string, global::Serde.ISerdeInfo, System.Reflection.MemberInfo?)[] {
-            ("c", global::Serde.SerdeInfoProvider.GetDeserializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Json.Test.InvalidJsonTests.SkipClass).GetProperty("C"))
+            ("C", global::Serde.SerdeInfoProvider.GetDeserializeInfo<int, global::Serde.I32Proxy>(), typeof(Serde.Json.Test.InvalidJsonTests.SkipClass).GetProperty("C"))
         }
         );
     }

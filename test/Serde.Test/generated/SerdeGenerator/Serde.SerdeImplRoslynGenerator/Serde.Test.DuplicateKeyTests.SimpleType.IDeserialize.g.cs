@@ -59,6 +59,9 @@ partial class DuplicateKeyTests
                     Value = _l_value,
                 };
 
+
+                typeDeserialize.End(_l_serdeInfo);
+
                 return newType;
             }
         }

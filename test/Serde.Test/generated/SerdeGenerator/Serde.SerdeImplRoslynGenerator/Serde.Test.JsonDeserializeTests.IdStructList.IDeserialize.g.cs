@@ -59,6 +59,9 @@ partial class JsonDeserializeTests
                     List = _l_list,
                 };
 
+
+                typeDeserialize.End(_l_serdeInfo);
+
                 return newType;
             }
         }

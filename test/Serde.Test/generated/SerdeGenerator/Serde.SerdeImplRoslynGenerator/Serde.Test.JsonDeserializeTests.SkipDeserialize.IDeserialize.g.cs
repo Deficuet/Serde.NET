@@ -53,6 +53,9 @@ partial class JsonDeserializeTests
                     Required = _l_required,
                 };
 
+
+                typeDeserialize.End(_l_serdeInfo);
+
                 return newType;
             }
         }
