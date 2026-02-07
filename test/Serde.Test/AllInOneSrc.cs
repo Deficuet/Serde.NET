@@ -35,7 +35,6 @@ namespace Serde.Test
         public DateTime DateTimeField;
         public DateOnly DateOnlyField;
         public TimeOnly TimeOnlyField;
-        public Guid GuidField;
 
         public required string EscapedStringField;
 
@@ -79,7 +78,6 @@ namespace Serde.Test
                 DateOnlyField == other.DateOnlyField &&
                 TimeOnlyField == other.TimeOnlyField &&
                 EscapedStringField == other.EscapedStringField &&
-                GuidField.Equals(other.GuidField) &&
                 NullStringField == other.NullStringField &&
                 UIntArr.AsSpan().SequenceEqual(other.UIntArr.AsSpan()) &&
                 NestedArr.AsSpan().SequenceEqual(other.NestedArr.AsSpan(),
@@ -126,12 +124,6 @@ namespace Serde.Test
             DateTimeField = new DateTime(2040, 1, 1, 1, 1, 1, DateTimeKind.Utc),
             DateOnlyField = new DateOnly(2040, 6, 15),
             TimeOnlyField = new TimeOnly(14, 30, 45),
-            GuidField = new Guid(new byte[] {
-                0x01, 0x02, 0x03, 0x04,
-                0x05, 0x06, 0x07, 0x08,
-                0x09, 0x0A, 0x0B, 0x0C,
-                0x0D, 0x0E, 0x0F, 0x10,
-            }),
 
             EscapedStringField = "+0 11 222 333 44",
 
@@ -163,7 +155,6 @@ namespace Serde.Test
   "dateTimeField": "2040-01-01T01:01:01Z",
   "dateOnlyField": "2040-06-15",
   "timeOnlyField": "14:30:45",
-  "guidField": "04030201-0605-0807-090a-0b0c0d0e0f10",
   "escapedStringField": "\u002B0 11 222 333 44",
   "uIntArr": [
     1,

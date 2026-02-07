@@ -25,7 +25,23 @@ public interface IDeserializer : IDisposable
     double ReadF64();
     decimal ReadDecimal();
     string ReadString();
+
+    /// <summary>
+    /// Reads the next value from the data source as an enumeration index and its corresponding name.
+    /// </summary>
+    /// <param name="enumInfo">The metadata describing the enumeration to be read. Cannot be null.</param>
+    /// <returns>A tuple containing the zero-based index of the enumeration value and its name as a string, or null if the name
+    /// is not applicable.</returns>
     (int, string?) ReadEnumIndex(ISerdeInfo enumInfo);
+
+    /// <summary>
+    /// Attempts to read a deserializer-specialized GUID value. 
+    /// Otherwise, return false if the deserialization needs to be delegated to other proxy.
+    /// </summary>
+    /// <param name="guid">When this method returns, contains the GUID value read from the input if the operation succeeds; otherwise,
+    /// contains <see cref="Guid.Empty"/>. This parameter is passed uninitialized.</param>
+    /// <returns>true if a valid GUID was successfully read; false otherwise.</returns>
+    bool TryReadGuid(out Guid guid);
     DateTime ReadDateTime();
     DateTimeOffset ReadDateTimeOffset();
     DateOnly ReadDateOnly()
@@ -191,21 +207,5 @@ public static class ITypeDeserializerExt
         where TProvider : IDeserializeProvider<T>
     {
         return (T)deserializeType.ReadValue(info, index, BoxProxy.De<T, TProvider>.Instance)!;
-    }
-
-    public static Guid ReadGuid<TProvider>(this ITypeDeserializer deserializeType, ISerdeInfo info, int index)
-        where TProvider : IDeserializeProvider<UInt128>
-    {
-        var u128 = deserializeType.ReadValue128(info, index, TProvider.Instance);
-        Span<byte> bytes = stackalloc byte[16];
-        if (BitConverter.IsLittleEndian)
-        {
-            BinaryPrimitives.WriteUInt128LittleEndian(bytes, u128);
-        }
-        else
-        {
-            BinaryPrimitives.WriteUInt128BigEndian(bytes, u128);
-        }
-        return new Guid(bytes, !BitConverter.IsLittleEndian);
     }
 }

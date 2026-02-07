@@ -33,14 +33,13 @@ partial record AllInOne
             _l_type.WriteDateTime(_l_info, 14, value.DateTimeField);
             _l_type.WriteBoxedValue<global::System.DateOnly, global::Serde.DateOnlyProxy>(_l_info, 15, value.DateOnlyField);
             _l_type.WriteBoxedValue<global::System.TimeOnly, global::Serde.TimeOnlyProxy>(_l_info, 16, value.TimeOnlyField);
-            _l_type.WriteBoxedValue<global::System.Guid, global::Serde.GuidProxy>(_l_info, 17, value.GuidField);
-            _l_type.WriteString(_l_info, 18, value.EscapedStringField);
-            _l_type.WriteStringIfNotNull(_l_info, 19, value.NullStringField);
-            _l_type.WriteValue<uint[], Serde.ArrayProxy.Ser<uint, global::Serde.U32Proxy>>(_l_info, 20, value.UIntArr);
-            _l_type.WriteValue<int[][], Serde.ArrayProxy.Ser<int[], Serde.ArrayProxy.Ser<int, global::Serde.I32Proxy>>>(_l_info, 21, value.NestedArr);
-            _l_type.WriteValue<global::System.Byte[], global::Serde.ByteArrayProxy>(_l_info, 22, value.ByteArr);
-            _l_type.WriteBoxedValue<System.Collections.Immutable.ImmutableArray<int>, Serde.ImmutableArrayProxy.Ser<int, global::Serde.I32Proxy>>(_l_info, 23, value.IntImm);
-            _l_type.WriteBoxedValue<Serde.Test.AllInOne.ColorEnum, Serde.Test.AllInOne.ColorEnumProxy>(_l_info, 24, value.Color);
+            _l_type.WriteString(_l_info, 17, value.EscapedStringField);
+            _l_type.WriteStringIfNotNull(_l_info, 18, value.NullStringField);
+            _l_type.WriteValue<uint[], Serde.ArrayProxy.Ser<uint, global::Serde.U32Proxy>>(_l_info, 19, value.UIntArr);
+            _l_type.WriteValue<int[][], Serde.ArrayProxy.Ser<int[], Serde.ArrayProxy.Ser<int, global::Serde.I32Proxy>>>(_l_info, 20, value.NestedArr);
+            _l_type.WriteValue<global::System.Byte[], global::Serde.ByteArrayProxy>(_l_info, 21, value.ByteArr);
+            _l_type.WriteBoxedValue<System.Collections.Immutable.ImmutableArray<int>, Serde.ImmutableArrayProxy.Ser<int, global::Serde.I32Proxy>>(_l_info, 22, value.IntImm);
+            _l_type.WriteBoxedValue<Serde.Test.AllInOne.ColorEnum, Serde.Test.AllInOne.ColorEnumProxy>(_l_info, 23, value.Color);
             _l_type.End(_l_info);
         }
 

@@ -474,57 +474,6 @@ public static class NullableRefProxy
     }
 }
 
-public sealed class GuidProxy
-    : ISerdePrimitive<GuidProxy, Guid>,
-    IDeserialize<UInt128>,
-    IDeserializeProvider<UInt128>
-{
-    public static GuidProxy Instance { get; } = new();
-    static IDeserialize<UInt128> IDeserializeProvider<UInt128>.Instance => Instance;
-    private GuidProxy() { }
-
-    public static ISerdeInfo SerdeInfo { get; }
-        = Serde.SerdeInfo.MakePrimitive("System.Guid", PrimitiveKind.String);
-    ISerdeInfo ISerdeInfoProvider.SerdeInfo => SerdeInfo;
-
-    void ISerialize<Guid>.Serialize(Guid value, ISerializer serializer)
-    {
-        var bytes = value.ToString();
-        serializer.WriteString(bytes);
-    }
-
-    Guid IDeserialize<Guid>.Deserialize(IDeserializer deserializer)
-    {
-        var bytes = deserializer.ReadString();
-        return Guid.Parse(bytes);
-    }
-
-    UInt128 IDeserialize<UInt128>.Deserialize(IDeserializer deserializer)
-    {
-        var str = deserializer.ReadString();
-        var guid = Guid.Parse(str);
-        Span<byte> guidBytes = stackalloc byte[16];
-        if (!guid.TryWriteBytes(guidBytes, bigEndian: !BitConverter.IsLittleEndian, out int written) || written != 16)
-        {
-            throw new InvalidOperationException("Couldn't write GUID bytes");
-        }
-        return BitConverter.IsLittleEndian
-            ? BinaryPrimitives.ReadUInt128LittleEndian(guidBytes)
-            : BinaryPrimitives.ReadUInt128BigEndian(guidBytes);
-    }
-
-    void ITypeSerialize<Guid>.Serialize(Guid value, ITypeSerializer serializer, ISerdeInfo info, int index)
-    {
-        var bytes = value.ToString();
-        serializer.WriteString(info, index, bytes);
-    }
-
-    Guid ITypeDeserialize<Guid>.Deserialize(ITypeDeserializer deserializer, ISerdeInfo info, int index)
-    {
-        var bytes = deserializer.ReadString(info, index);
-        return Guid.Parse(bytes);
-    }
-}
 
 public sealed class ByteArrayProxy : ISerdePrimitive<ByteArrayProxy, byte[]>
 {

@@ -26,7 +26,6 @@ partial record AllInOne
         ("DateTimeField", global::Serde.SerdeInfoProvider.GetSerializeInfo<System.DateTime, global::Serde.DateTimeProxy>(), typeof(Serde.Test.AllInOne).GetField("DateTimeField")),
         ("DateOnlyField", global::Serde.SerdeInfoProvider.GetSerializeInfo<System.DateOnly, global::Serde.DateOnlyProxy>(), typeof(Serde.Test.AllInOne).GetField("DateOnlyField")),
         ("TimeOnlyField", global::Serde.SerdeInfoProvider.GetSerializeInfo<System.TimeOnly, global::Serde.TimeOnlyProxy>(), typeof(Serde.Test.AllInOne).GetField("TimeOnlyField")),
-        ("GuidField", global::Serde.SerdeInfoProvider.GetSerializeInfo<System.Guid, global::Serde.GuidProxy>(), typeof(Serde.Test.AllInOne).GetField("GuidField")),
         ("EscapedStringField", global::Serde.SerdeInfoProvider.GetSerializeInfo<string, global::Serde.StringProxy>(), typeof(Serde.Test.AllInOne).GetField("EscapedStringField")),
         ("NullStringField", global::Serde.SerdeInfoProvider.GetSerializeInfo<string?, Serde.NullableRefProxy.Ser<string, global::Serde.StringProxy>>(), typeof(Serde.Test.AllInOne).GetField("NullStringField")),
         ("UIntArr", global::Serde.SerdeInfoProvider.GetSerializeInfo<uint[], Serde.ArrayProxy.Ser<uint, global::Serde.U32Proxy>>(), typeof(Serde.Test.AllInOne).GetField("UIntArr")),

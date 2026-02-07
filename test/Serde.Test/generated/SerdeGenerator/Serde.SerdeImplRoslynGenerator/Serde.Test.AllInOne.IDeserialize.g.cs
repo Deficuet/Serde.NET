@@ -31,7 +31,6 @@ partial record AllInOne
             System.DateTime _l_datetimefield = default!;
             System.DateOnly _l_dateonlyfield = default!;
             System.TimeOnly _l_timeonlyfield = default!;
-            System.Guid _l_guidfield = default!;
             string _l_escapedstringfield = default!;
             string? _l_nullstringfield = null;
             uint[] _l_uintarr = null!;
@@ -141,43 +140,38 @@ partial record AllInOne
                         break;
                     case 17:
                         Serde.DeserializeException.ThrowIfDuplicate(_r_assignedValid, 17, _l_serdeInfo);
-                        _l_guidfield = typeDeserialize.ReadGuid<global::Serde.GuidProxy>(_l_serdeInfo, _l_index_);
+                        _l_escapedstringfield = typeDeserialize.ReadString(_l_serdeInfo, _l_index_);
                         _r_assignedValid |= ((uint)1) << 17;
                         break;
                     case 18:
                         Serde.DeserializeException.ThrowIfDuplicate(_r_assignedValid, 18, _l_serdeInfo);
-                        _l_escapedstringfield = typeDeserialize.ReadString(_l_serdeInfo, _l_index_);
+                        _l_nullstringfield = typeDeserialize.ReadValue<string?, Serde.NullableRefProxy.De<string, global::Serde.StringProxy>>(_l_serdeInfo, _l_index_);
                         _r_assignedValid |= ((uint)1) << 18;
                         break;
                     case 19:
                         Serde.DeserializeException.ThrowIfDuplicate(_r_assignedValid, 19, _l_serdeInfo);
-                        _l_nullstringfield = typeDeserialize.ReadValue<string?, Serde.NullableRefProxy.De<string, global::Serde.StringProxy>>(_l_serdeInfo, _l_index_);
+                        _l_uintarr = typeDeserialize.ReadValue<uint[], Serde.ArrayProxy.De<uint, global::Serde.U32Proxy>>(_l_serdeInfo, _l_index_);
                         _r_assignedValid |= ((uint)1) << 19;
                         break;
                     case 20:
                         Serde.DeserializeException.ThrowIfDuplicate(_r_assignedValid, 20, _l_serdeInfo);
-                        _l_uintarr = typeDeserialize.ReadValue<uint[], Serde.ArrayProxy.De<uint, global::Serde.U32Proxy>>(_l_serdeInfo, _l_index_);
+                        _l_nestedarr = typeDeserialize.ReadValue<int[][], Serde.ArrayProxy.De<int[], Serde.ArrayProxy.De<int, global::Serde.I32Proxy>>>(_l_serdeInfo, _l_index_);
                         _r_assignedValid |= ((uint)1) << 20;
                         break;
                     case 21:
                         Serde.DeserializeException.ThrowIfDuplicate(_r_assignedValid, 21, _l_serdeInfo);
-                        _l_nestedarr = typeDeserialize.ReadValue<int[][], Serde.ArrayProxy.De<int[], Serde.ArrayProxy.De<int, global::Serde.I32Proxy>>>(_l_serdeInfo, _l_index_);
+                        _l_bytearr = typeDeserialize.ReadValue<byte[], global::Serde.ByteArrayProxy>(_l_serdeInfo, _l_index_);
                         _r_assignedValid |= ((uint)1) << 21;
                         break;
                     case 22:
                         Serde.DeserializeException.ThrowIfDuplicate(_r_assignedValid, 22, _l_serdeInfo);
-                        _l_bytearr = typeDeserialize.ReadValue<byte[], global::Serde.ByteArrayProxy>(_l_serdeInfo, _l_index_);
+                        _l_intimm = typeDeserialize.ReadBoxedValue<System.Collections.Immutable.ImmutableArray<int>, Serde.ImmutableArrayProxy.De<int, global::Serde.I32Proxy>>(_l_serdeInfo, _l_index_);
                         _r_assignedValid |= ((uint)1) << 22;
                         break;
                     case 23:
                         Serde.DeserializeException.ThrowIfDuplicate(_r_assignedValid, 23, _l_serdeInfo);
-                        _l_intimm = typeDeserialize.ReadBoxedValue<System.Collections.Immutable.ImmutableArray<int>, Serde.ImmutableArrayProxy.De<int, global::Serde.I32Proxy>>(_l_serdeInfo, _l_index_);
-                        _r_assignedValid |= ((uint)1) << 23;
-                        break;
-                    case 24:
-                        Serde.DeserializeException.ThrowIfDuplicate(_r_assignedValid, 24, _l_serdeInfo);
                         _l_color = typeDeserialize.ReadBoxedValue<Serde.Test.AllInOne.ColorEnum, Serde.Test.AllInOne.ColorEnumProxy>(_l_serdeInfo, _l_index_);
-                        _r_assignedValid |= ((uint)1) << 24;
+                        _r_assignedValid |= ((uint)1) << 23;
                         break;
                     case Serde.ITypeDeserializer.IndexNotFound:
                         typeDeserialize.SkipValue(_l_serdeInfo, _l_index_);
@@ -186,7 +180,7 @@ partial record AllInOne
                         throw new InvalidOperationException("Unexpected index: " + _l_index_);
                 }
             }
-            if ((_r_assignedValid & 0b1111101111111111111111111) != 0b1111101111111111111111111)
+            if ((_r_assignedValid & 0b111110111111111111111111) != 0b111110111111111111111111)
             {
                 throw Serde.DeserializeException.UnassignedMember();
             }
@@ -208,7 +202,6 @@ partial record AllInOne
                 DateTimeField = _l_datetimefield,
                 DateOnlyField = _l_dateonlyfield,
                 TimeOnlyField = _l_timeonlyfield,
-                GuidField = _l_guidfield,
                 EscapedStringField = _l_escapedstringfield,
                 NullStringField = _l_nullstringfield,
                 UIntArr = _l_uintarr,

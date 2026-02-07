@@ -123,6 +123,18 @@ internal sealed partial class JsonDeserializer<TReader> : BaseJsonDeserializer, 
         return Reader.LexUtf8Span(_scratch);
     }
 
+    public bool TryReadGuid(out Guid guid)
+    {
+        var peek = ThrowIfEos(Reader.SkipWhitespace());
+        if (peek != (short)'"')
+        {
+            guid = Guid.Empty;
+            return false;
+        }
+        var jsonVal = ReadJsonValue();
+        return Guid.TryParse(jsonVal.ToString(), out guid);
+    }
+
     public (int, string?) ReadEnumIndex(ISerdeInfo enumInfo)
     {
         var peek = ThrowIfEos(Reader.SkipWhitespace());
